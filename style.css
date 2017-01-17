@@ -1,0 +1,29 @@
+* {
+
+margin: 2em;
+
+}
+
+h1 {
+
+text-align: center;
+
+}
+
+.random-images {
+
+display: inline-block;
+
+}
+
+#banana, #dog-duck, #unicorn {
+
+border: 2px solid black;
+height: 200px;
+width: auto;
+padding: 1em;
+margin: 1em;
+align-items: center;
+
+
+}
