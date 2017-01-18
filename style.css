@@ -10,11 +10,6 @@ text-align: center;
 
 }
 
-.random-images {
-
-  display: inline-block;
-
-}
 
 #left, #center, #right {
 
@@ -23,5 +18,6 @@ text-align: center;
   width: auto;
   padding: 1em;
   margin: 1em;
-  
+  display:inline-block;
+
 }
