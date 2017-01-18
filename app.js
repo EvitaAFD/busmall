@@ -33,29 +33,34 @@ console.log(randomImageGen());
 //creates random number three times, different everytime, use number to grab filepath out of productArray at index randomImageGen, and displays image
 function displayImage (){
   for(var j = 0; j < 3; j++){
+    console.log(j);
     var newImage = randomImageGen();
     var getImage = productArray[newImage].filePath;
     console.log(getImage);
     // currentImageDis.push(getImage[0]);
     if (j === 0){
-      currentImageDis.push(getImage[0]);
-    } else {
-      j--;
-    }
-    if (j === 1 || j === currentImageDis[0]) {
       currentImageDis.push(getImage);
-    } else {
-      j--;
-    }
-    if (j === 2 || currentImageDis[1]) {
-      currentImageDis.push(getImage);
-    } else {
-      j--;
+    } else if (j === 1) {
+      if (getImage === currentImageDis[0]) {
+        j--;
+      } else {
+        currentImageDis.push(getImage);
+      }
+    } else if (j === 2) {
+      if(getImage === currentImageDis[0] || getImage === currentImageDis[1]){
+        j--;
+      } else {
+        currentImageDis.push(getImage);
+      }
     }
   }
+  for(var p = 0; p < 3; p++) {
+    elArray[p].setAttribute('src', getImage[p]);
+  }
+  console.log('p' + p);
+  console.log(currentImageDis);
 }
 
-function
 // elArray[j].setAttribute('src', getImage);
 displayImage();
 
