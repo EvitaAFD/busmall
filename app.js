@@ -85,22 +85,21 @@ function displayThreeImages () {
   }
   console.log(index1, index2, index3);
 
-  totalViews.push(productArray[index1], productArray[index2], productArray[index3]);
   el1.setAttribute('src', productArray[index1].filePath);
   el2.setAttribute('src', productArray[index2].filePath);
   el3.setAttribute('src', productArray[index3].filePath);
-  // for (var i = 0; i < totalViews.length; i++) {
-  //   productArray[i].numViewed++;
-  // }
+
   console.log(productArray);
 }
 displayThreeImages();
-
+totalViews.push(productArray[index1], productArray[index2], productArray[index3]);
 el1.addEventListener('click', clickImageOne, false);
 function clickImageOne() {
   stopEventListener();
   totalClicks ++;
   productArray[index1].numClicked++;
+  totalViews ++;
+  productArray[index1].numViewed++;
   console.log('this is this total' + totalClicks);
   console.log(productArray[index1]);
   displayThreeImages();
@@ -110,6 +109,8 @@ function clickImageTwo(){
   stopEventListener();
   totalClicks ++;
   productArray[index2].numClicked++;
+  totalViews ++;
+  productArray[index2].numViewed++;
   console.log('this is this total' + totalClicks);
   console.log(productArray[index2]);
   displayThreeImages();
@@ -119,15 +120,19 @@ function clickImageThree() {
   stopEventListener();
   totalClicks ++;
   productArray[index3].numClicked++;
+  totalViews ++;
+  productArray[index3].numViewed++;
   console.log('this is this total' + totalClicks);
   console.log(productArray[index3]);
   displayThreeImages();
 }
 
 function stopEventListener() {
-  if (totalClicks > 3) {
+  if (totalClicks > 10) {
     el1.removeEventListener('click', clickImageOne);
     el2.removeEventListener('click', clickImageTwo);
     el3.removeEventListener('click', clickImageThree);
   }
 }
+
+//
