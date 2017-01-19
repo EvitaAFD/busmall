@@ -4,6 +4,7 @@ var images = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'c
 var productArray = [];
 var index1, index2, index3;
 var totalClicks = 0;
+var totalViews = [];
 
 //DOM variables
 var picContainer = document.getElementById('random-images');
@@ -30,18 +31,18 @@ for(var i = 0; i < images.length; i++){
 console.log(productArray);
 
 //three randomly generated images
-function randomImageGen (){
+function randomImageGen () {
   return Math.floor(Math.random() * (productArray.length - 0)) + 0;
 }
 
-console.log(randomImageGen());
+//console.log(randomImageGen());
 //creates random number three times, different everytime, use number to grab filepath out of productArray at index randomImageGen, and displays image
 function makeThreeImages (){
   for(var j = 0; j < 3; j++){
     console.log(j);
     var newImage = randomImageGen();
     var getImage = productArray[newImage].filePath;
-    console.log(getImage);
+  //  console.log(getImage);
     // currentImageDis.push(getImage[0]);
 //     if (j === 0){
 //       currentImageDis.push(getImage);
@@ -67,44 +68,66 @@ function displayThreeImages () {
   index1 = randomImageGen();
   index2 = randomImageGen();
   index3 = randomImageGen();
-  if (index1 === index2 || index1 === index3 || index2 === index3){
+  if (index1 === index2){
     index1 = randomImageGen();
     index2 = randomImageGen();
     index3 = randomImageGen();
   }
+  if (index1 === index3) {
+    index1 = randomImageGen();
+    index2 = randomImageGen();
+    index3 = randomImageGen();
+  }
+  if (index2 === index3){
+    index1 = randomImageGen();
+    index2 = randomImageGen();
+    index3 = randomImageGen();
+  }
+  console.log(index1, index2, index3);
+
+  totalViews.push(productArray[index1], productArray[index2], productArray[index3]);
   el1.setAttribute('src', productArray[index1].filePath);
   el2.setAttribute('src', productArray[index2].filePath);
   el3.setAttribute('src', productArray[index3].filePath);
+  // for (var i = 0; i < totalViews.length; i++) {
+  //   productArray[i].numViewed++;
+  // }
+  console.log(productArray);
 }
 displayThreeImages();
 
 el1.addEventListener('click', clickImageOne, false);
 function clickImageOne() {
   stopEventListener();
-  displayThreeImages();
   totalClicks ++;
+  productArray[index1].numClicked++;
   console.log('this is this total' + totalClicks);
+  console.log(productArray[index1]);
+  displayThreeImages();
 }
 el2.addEventListener('click', clickImageTwo, false);
 function clickImageTwo(){
   stopEventListener();
-  displayThreeImages();
   totalClicks ++;
+  productArray[index2].numClicked++;
   console.log('this is this total' + totalClicks);
+  console.log(productArray[index2]);
+  displayThreeImages();
 }
 el3.addEventListener('click', clickImageThree, false);
 function clickImageThree() {
   stopEventListener();
-  displayThreeImages();
   totalClicks ++;
+  productArray[index3].numClicked++;
   console.log('this is this total' + totalClicks);
+  console.log(productArray[index3]);
+  displayThreeImages();
 }
 
 function stopEventListener() {
-  if (totalClicks > 10) {
+  if (totalClicks > 3) {
     el1.removeEventListener('click', clickImageOne);
     el2.removeEventListener('click', clickImageTwo);
     el3.removeEventListener('click', clickImageThree);
   }
 }
-//functionality to check if it is a duplicate
