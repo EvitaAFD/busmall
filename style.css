@@ -21,16 +21,22 @@ text-align: center;
 
 }
 
+.random-images {
+
+margin-left: 130px;
+
+}
 
 #left, #center, #right {
 
   border: 2px solid black;
   background-color: lightblue;
-  height: 200px;
+  height: 180px;
   width: auto;
   padding: 1em;
-  margin: 1em;
-  display:inline;
+  margin: 0.5em;
+  display:inline-block;
+  align-content: center;
 
 }
 
