@@ -75,8 +75,13 @@ function displayThreeImages () {
 
   console.log(productArray);
 }
+
 displayThreeImages();
 totalViews.push(productArray[index1], productArray[index2], productArray[index3]);
+
+//set local storage and stringify array
+localStorage.setItem('productData', JSON.stringify(productArray));
+
 el1.addEventListener('click', clickImageOne, false);
 function clickImageOne() {
   stopEventListener();
@@ -88,6 +93,7 @@ function clickImageOne() {
   console.log(productArray[index1]);
   displayThreeImages();
 }
+
 el2.addEventListener('click', clickImageTwo, false);
 function clickImageTwo(){
   stopEventListener();
@@ -99,6 +105,7 @@ function clickImageTwo(){
   console.log(productArray[index2]);
   displayThreeImages();
 }
+
 el3.addEventListener('click', clickImageThree, false);
 function clickImageThree() {
   stopEventListener();
@@ -152,4 +159,17 @@ function chartData() {
       }
     }
   });
+}
+
+//create local storage
+function storeLocalData () {
+  if(localStorage.productData){
+    console.log('There is local storage');
+
+    var retrieveData = localStorage.getItem('productData');
+    var parsedData = JSON.parse(retrieveData);
+    productArray = parsedData;
+  } else {
+    console.log('No local storage');
+  }
 }
