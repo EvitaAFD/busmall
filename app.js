@@ -125,7 +125,7 @@ function listImagesWithVotes() {
   var ImgsAndVotes = document.getElementById('num-votes-display');
   for(var i = 0; i < productArray.length; i++) {
     var listOfImg = document.createElement('li');
-    listOfImg.textContent = productArray[i].name + ' ' + productArray[i].numClicked + ' and was shown ' + productArray[i].numViewed;
+    listOfImg.textContent = 'The ' + productArray[i].name + ' was voted for ' + productArray[i].numClicked + ' times, and was shown ' + productArray[i].numViewed + ' times!';
     ImgsAndVotes.appendChild(listOfImg);
   }
 }
