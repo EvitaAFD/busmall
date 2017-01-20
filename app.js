@@ -43,22 +43,6 @@ function makeThreeImages (){
     var newImage = randomImageGen();
     var getImage = productArray[newImage].filePath;
   //  console.log(getImage);
-    // currentImageDis.push(getImage[0]);
-//     if (j === 0){
-//       currentImageDis.push(getImage);
-//     } else if (j === 1) {
-//       if (getImage === currentImageDis[0]) {
-//         j--;
-//       } else {
-//         currentImageDis.push(getImage);
-//       }
-//     } else if (j === 2) {
-//       if(getImage === currentImageDis[0] || getImage === currentImageDis[1]){
-//         j--;
-//       } else {
-//         currentImageDis.push(getImage);
-//       }
-//     }
   }
 }
 //console.log(currentImageDis);
@@ -128,11 +112,20 @@ function clickImageThree() {
 }
 
 function stopEventListener() {
-  if (totalClicks > 10) {
+  if (totalClicks > 5) {
     el1.removeEventListener('click', clickImageOne);
     el2.removeEventListener('click', clickImageTwo);
     el3.removeEventListener('click', clickImageThree);
+    listImagesWithVotes();
   }
 }
 
-//
+//display list after voting completed
+function listImagesWithVotes() {
+  var ImgsAndVotes = document.getElementById('num-votes-display');
+  for(var i = 0; i < productArray.length; i++) {
+    var listOfImg = document.createElement('li');
+    listOfImg.textContent = productArray[i].name + ' ' + productArray[i].numClicked + ' and was shown ' + productArray[i].numViewed;
+    ImgsAndVotes.appendChild(listOfImg);
+  }
+}
