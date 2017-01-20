@@ -112,20 +112,44 @@ function clickImageThree() {
 }
 
 function stopEventListener() {
-  if (totalClicks > 5) {
+  if (totalClicks > 25) {
     el1.removeEventListener('click', clickImageOne);
     el2.removeEventListener('click', clickImageTwo);
     el3.removeEventListener('click', clickImageThree);
-    listImagesWithVotes();
+    chartData();
   }
 }
 
-//display list after voting completed
-function listImagesWithVotes() {
-  var ImgsAndVotes = document.getElementById('num-votes-display');
+//create Chart
+function chartData() {
+  var names = [];
+  var data = [];
   for(var i = 0; i < productArray.length; i++) {
-    var listOfImg = document.createElement('li');
-    listOfImg.textContent = 'The ' + productArray[i].name + ' was voted for ' + productArray[i].numClicked + ' times, and was shown ' + productArray[i].numViewed + ' times!';
-    ImgsAndVotes.appendChild(listOfImg);
+    names.push(productArray[i].name);
+    data.push(productArray[i].numClicked);
   }
+  var context = document.getElementById('votes-chart').getContext('2d');
+
+  var chartColors = ['lightblue', 'lightgreen', 'lightpink', 'blue', 'green', 'pink', 'lightblue', 'lightgreen', 'lightpink', 'blue', 'green', 'pink', 'lightblue', 'lightgreen', 'lightpink', 'blue', 'green', 'pink', 'lightblue', 'lightgreen', 'lightpink', 'blue', 'green', 'pink'];
+
+  var dataChart = new Chart(context, {
+    type: 'bar',
+    data: {
+      labels: names,
+      datasets: [{
+        label: '# of Votes for Each Product',
+        data: data,
+        backgroundColor: chartColors
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+          }
+        }]
+      }
+    }
+  });
 }
