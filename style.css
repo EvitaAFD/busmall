@@ -1,0 +1,53 @@
+* {
+
+margin: 2em;
+
+}
+
+h1 {
+
+font-family: fantasy;
+font-size: 40px;
+background-color: lightblue;
+text-align: center;
+
+}
+
+p {
+
+font-family: times;
+font-size: 20px;
+text-align: center;
+
+}
+
+
+#left, #center, #right {
+
+  border: 2px solid black;
+  background-color: lightblue;
+  height: 200px;
+  width: auto;
+  padding: 1em;
+  margin: 1em;
+  display:inline;
+
+}
+
+h2 {
+
+background-color: lightgreen;
+font-family: fantasy;
+font-size: 30px;
+text-align: center;
+
+}
+
+
+#num-votes-displayed {
+
+font-family: times;
+margin-left:40%;
+margin-right: 40%;
+
+}
