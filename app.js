@@ -22,7 +22,7 @@ function Product (name){
   this.numClicked = 0;
 
 }
-//create product images and push into productArray
+//create product instances and push into productArray
 for(var i = 0; i < images.length; i++){
   var newProduct = new Product(images[i]);
   productArray.push(newProduct);
@@ -167,7 +167,7 @@ function storeLocalData () {
     console.log('There is local storage');
 
     var retrieveData = localStorage.getItem('productData');
-    var parsedData = JSON.parse(retrieveData);
+    var parsedData = JSON.parse(retrieveData);         //extracts data and un-strigyfies turns into object
     productArray = parsedData;
   } else {
     console.log('No local storage');
